@@ -64,31 +64,11 @@ button.addEventListener("click", function () {
 
 // ---------------------------------------------------- PARI E DISPARI ----------------------------------------------------------
 
-
-
-function askWordUser() {
-    const element = document.getElementById("word");
-    const word = element.value;
-
-    return word;
+// Funzione che genera random un numero che va da 1 a 5
+function randomNumber(){
+    const numberRandom = Math.floor(Math.random() * 5) + 1;
+    return numberRandom;
 }
 
-// Creo elemento nell'html
-const result = document.querySelector(".result");
-const element = document.createElement("p");
 
-// Assegno un azione al pulsante
-const button = document.getElementById("button-word");
-button.addEventListener("click", function () {
-    // Chiedo all'utente di inserire in input una parola
-    let word = askWordUser();
 
-    // Mostro a schermo il risultato della parola
-    if (palindrome(word)) {
-        element.innerHTML = `La parola inserita "${word}" risulta essere di tipo Palindroma`;
-    } else {
-        element.innerHTML = `La parola inserita "${word}" non risulta essere di tipo Palindroma`;
-    }
-
-    result.append(element);
-});
