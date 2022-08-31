@@ -8,7 +8,8 @@ body {
     font-family: sans-serif;
 }
 
-.askWord{
+.askWord,
+.askEvenOdd{
     width: 400px;
     display: flex;
     flex-direction: column;
@@ -16,11 +17,13 @@ body {
 
 label,
 input,
+select,
 button{
     margin: 15px;
 }
 
-input{
+input,
+select{
     padding: 5px;
 }
 

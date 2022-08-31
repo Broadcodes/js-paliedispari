@@ -10,8 +10,10 @@ Pari e Dispari
     Dichiariamo chi ha vinto.
 */
 
+// ---------------------------------------------------- PAROLA PALINDROMA ----------------------------------------------------------
+
 // Creo una funzione che mi determini se una parola è di tipo palindroma o meno
-function palindrome(word) {
+function isPalindrome(word) {
 
     // Dichiaro due array, oldWord acquisirà la parola in input convertita in array,
     // mentre newWord conterrà la nuova parola in formato array (ovvero ogni carattere sarà posizionato ad ogni indice)
@@ -60,3 +62,33 @@ button.addEventListener("click", function () {
     result.append(element);
 });
 
+// ---------------------------------------------------- PARI E DISPARI ----------------------------------------------------------
+
+
+
+function askWordUser() {
+    const element = document.getElementById("word");
+    const word = element.value;
+
+    return word;
+}
+
+// Creo elemento nell'html
+const result = document.querySelector(".result");
+const element = document.createElement("p");
+
+// Assegno un azione al pulsante
+const button = document.getElementById("button-word");
+button.addEventListener("click", function () {
+    // Chiedo all'utente di inserire in input una parola
+    let word = askWordUser();
+
+    // Mostro a schermo il risultato della parola
+    if (palindrome(word)) {
+        element.innerHTML = `La parola inserita "${word}" risulta essere di tipo Palindroma`;
+    } else {
+        element.innerHTML = `La parola inserita "${word}" non risulta essere di tipo Palindroma`;
+    }
+
+    result.append(element);
+});
