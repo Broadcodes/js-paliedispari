@@ -10,3 +10,22 @@ Pari e Dispari
     Dichiariamo chi ha vinto.
 */ 
 
+// Creo una funzione che mi determini se una parola è di tipo palindroma o meno
+function palindrome(word){
+
+    // Dichiaro due array, oldWord acquisirà la parola in input convertita in array,
+    // mentre newWord conterrà la nuova parola in formato array (ovvero ogni carattere sarà posizionato ad ogni indice)
+    const oldWord = word.split("");
+    const newWord = [];
+
+    // Ciclo for che permette di rovesciare una parola per determinare successivamente se la parola è palindroma
+    for(let i = 0; i < oldWord.length; i++){
+        newWord[i] = oldWord[(oldWord.length - 1) - i]
+    }
+
+    console.log(newWord.join(""));
+
+    
+}
+
+palindrome("ciao");
