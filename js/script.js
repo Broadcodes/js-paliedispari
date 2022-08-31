@@ -2,7 +2,7 @@
 Palindroma
     Chiedere all’utente di inserire una parola
     Creare una funzione per capire se la parola inserita è palindroma
-*/ 
+*/
 
 // ---------------------------------------------------- PAROLA PALINDROMA ----------------------------------------------------------
 
@@ -47,7 +47,7 @@ button.addEventListener("click", function () {
     let word = askWordUser();
 
     // Mostro a schermo il risultato della parola
-    if (palindrome(word)) {
+    if (isPalindrome(word)) {
         element.innerHTML = `La parola inserita "${word}" risulta essere di tipo Palindroma`;
     } else {
         element.innerHTML = `La parola inserita "${word}" non risulta essere di tipo Palindroma`;
@@ -66,21 +66,52 @@ Pari e Dispari
     Dichiariamo chi ha vinto.
 */
 
+// Assegno un azione al pulsante
+const buttonEvenOdd = document.getElementById("button-evenOdd");
+buttonEvenOdd.addEventListener("click", function () {
+    // Recupero valore inserito dall'utente
+    const valueSelectEvenOrOdd = document.getElementById("evenOrOdd").value;
+    const valueNumberEvenOrOdd = document.getElementById("number").value;
+
+    // Genero numero random e assegno valore a variabile
+    const valueNumber = randomNumber();
+    let numSum;
+
+    // Condizione per verificare se il valore è compreso fra 1 e 5
+    if (valueNumberEvenOrOdd < 1 || valueNumberEvenOrOdd > 5) {
+        alert("Hai inserito un valore che non è compreso fra 1 e 5");
+    } else {
+        // Sommo i numeri: numero generato random + numero inserito da utente
+        numSum = sum(valueNumber, valueNumberEvenOrOdd);
+
+        // Stabilisco se la somma dei due numeri è pari o dispari
+        const resultGame = evenOrOdd(numSum);
+
+        if (resultGame === valueSelectEvenOrOdd) {
+            element.innerHTML = `Hai Vinto, la somma tra il tuo numero e quello del computer fa PARI`;
+        } else {
+            element.innerHTML = `Mi dispiace, ma la somma tra il tuo numero e quello del computer fa DISPARI`;
+        }
+
+        result.append(element);
+    }
+});
+
 // Funzione che genera random un numero che va da 1 a 5
-function randomNumber(){
+function randomNumber() {
     const numberRandom = Math.floor(Math.random() * 5) + 1;
     return numberRandom;
 }
 
 // Funzione che somma i due numeri
-function sum(numRandom, num){
+function sum(numRandom, num) {
     return numRandom + num;
 }
 
 // Funzione che stabilisce se la somma dei due numeri è pari o dispari
-function evenOrOdd(sum){
-    if(sum % 2 === 0){
-        return true;
+function evenOrOdd(sum) {
+    if (sum % 2 === 0) {
+        return "Pari";
     }
-    return false;
+    return "Dispari";
 }
