@@ -23,9 +23,40 @@ function palindrome(word){
         newWord[i] = oldWord[(oldWord.length - 1) - i]
     }
 
-    console.log(newWord.join(""));
+    let wordInString = newWord.join("");
 
-    
+    // Condizione che restituisce un valore booleano a seconda se la parola è palindroma o meno
+    if(wordInString === word){
+        return true;
+    } else {
+        return false;
+    }    
 }
 
-palindrome("ciao");
+function askWordUser(){
+    const word = prompt("Inserire una parola:");
+
+    if(isNaN(word)){
+        return word;
+    } else {
+        alert("Inserire una parola");
+        askWordUser();
+    }
+}
+
+// Chiedo all'utente di inserire in input una parola
+let word = askWordUser();
+
+// Creo elemento nell'html
+const result = document.querySelector(".result");
+const element = document.createElement("p");
+
+
+// Mostro a schermo il risultato della parola
+if(palindrome(word)){
+    element.innerHTML = `La parola inserita "${word}" risulta essere di tipo Palindroma`;
+} else {
+    element.innerHTML = `La parola inserita "${word}" non risulta essere di tipo Palindroma`;
+}
+
+result.append(element);
